@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Add Candidate (Admin)</h3>
+<form method="post" class="card p-3">
+  <div class="mb-3">
+    <label class="form-label">Admin Key</label>
+    <input name="key" class="form-control" value="{{ key or admin_key }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Candidate Name</label>
+    <input name="name" class="form-control" placeholder="Enter name" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Manifesto (optional)</label>
+    <textarea name="manifesto" class="form-control" rows="3"></textarea>
+  </div>
+  <button class="btn btn-success">Add</button>
+  <a href="{{ url_for('results') }}" class="btn btn-secondary ms-2">View Results</a>
+</form>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Vote for Class Representative</h3>
+
+{% if not candidates %}
+  <p>No candidates yet. Ask admin to add some.</p>
+{% else %}
+<form method="post" class="card p-3">
+  <div class="mb-3">
+    <label class="form-label">Your Roll Number</label>
+    <input name="roll" class="form-control" placeholder="e.g., IT23-045" required>
+  </div>
+
+  <div class="mb-3">
+    <label class="form-label">Select Candidate</label>
+    {% for c in candidates %}
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="candidate" id="c{{ c.id }}" value="{{ c.id }}" required>
+        <label class="form-check-label" for="c{{ c.id }}"><strong>{{ c.name }}</strong> – {{ c.manifesto }}</label>
+      </div>
+    {% endfor %}
+  </div>
+
+  <button class="btn btn-primary">Submit Vote</button>
+</form>
+{% endif %}
+{% endblock %}

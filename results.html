@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h3 class="mb-3">Results</h3>
+<p>Total votes: <strong>{{ total_votes }}</strong></p>
+
+{% if winner %}
+  <div class="alert alert-success">
+    Leading: <strong>{{ winner.candidate.name }}</strong> ({{ winner.count }} votes)
+  </div>
+{% endif %}
+
+<ul class="list-group">
+  {% for row in totals %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <span>{{ row.candidate.name }}</span>
+      <span class="badge bg-primary rounded-pill">{{ row.count }}</span>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}
